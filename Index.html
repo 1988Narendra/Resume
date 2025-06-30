@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P. Narendra - Automobile Industry Professional</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            scroll-behavior: smooth;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #e4e7ec 100%);
+        }
+
+        .resume-header {
+            background: linear-gradient(135deg, var(--primary-color), #1b7fe4);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 5px solid var(--secondary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resume-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            transform: rotate(30deg);
+        }
+
+        .profile-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 230px;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+            padding: 1.8rem;
+            position: sticky;
+            top: 20px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .sidebar:hover {
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+            padding: 2.2rem;
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.7rem;
+            margin-bottom: 1.8rem;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2.2rem;
+            border-left: 3px solid var(--secondary-color);
+            margin-left: 1.2rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -2.45rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--secondary-color);
+            margin-left: 15px;
+            margin-top: 12px;
+        }
+
+        .skill-badge {
+            background: linear-gradient(45deg, var(--secondary-color), #2c8bc7);
+            color: white;
+            font-weight: 600;
+            margin: 0.3rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-badge i {
+            margin-right: 8px;
+        }
+
+        .nav-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .nav-link i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            padding: 0.8rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .contact-info li:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+
+        .contact-info i {
+            color: var(--secondary-color);
+            margin-right: 1rem;
+            min-width: 24px;
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+
+        .professional-statement {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.8rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            font-style: italic;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .language-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .language-table th {
+            background: linear-gradient(135deg, var(--primary-color), #25364a);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .language-table td {
+            padding: 0.9rem;
+            text-align: center;
+            background: #f8fafc;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .language-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), #1a2530);
+            color: white;
+            padding: 2.5rem 0;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-radius: 10px;
+            padding: 1.5rem;
+            height: 100%;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .achievement-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #c0392b);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.5);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(231, 76, 60, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+            }
+        }
+
+        @media (max-width: 991px) {
+            .sidebar {
+                position: relative;
+                margin-bottom: 2rem;
+            }
+
+            .profile-photo {
+                margin: 0 auto 1.8rem;
+            }
+
+            .resume-header {
+                padding: 2rem 0;
+            }
+        }
+
+        /* PDF specific styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .resume-header {
+                padding: 1.5rem 0;
+                box-shadow: none;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 180px;
+            }
+
+            .sidebar,
+            .section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .floating-btn {
+                display: none !important;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+
+            .section-title::after {
+                width: 50px;
+            }
+
+            .timeline-item {
+                padding: 1rem;
+            }
+
+            .skill-badge {
+                padding: 0.4rem 0.8rem;
+                margin: 0.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#sidebar-nav" data-bs-offset="100">
+
+
+    <!-- Header with Name and Title -->
+    <header class="resume-header">
+        <div class="container profile-container">
+            <div class="row align-items-center">
+                <div class="col-md-3 text-center text-md-start">
+                    <div class="profile-photo mb-3 mb-md-0">
+                        <img src="resource/Photo.jpg" alt="Profile Photo"
+                            style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                </div>
+                <div class="col-md-9 text-center text-md-start mt-3 mt-md-0">
+                    <h1 class="display-4 fw-bold mb-1">P. NARENDRA</h1>
+                    <p class="lead mb-0">Assistant Manager - Automobile Industry Expert</p>
+                    <p class="mb-0">18+ Years Experience | Technical & Management Specialist</p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark fs-6 me-2 mb-2">
+                            <i class="fas fa-car me-1"></i> Automobile Engineering
+                        </span>
+                        <span class="badge bg-light text-dark fs-6 me-2 mb-2">
+                            <i class="fas fa-cogs me-1"></i> Technical Support
+                        </span>
+                        <span class="badge bg-light text-dark fs-6 me-2 mb-2">
+                            <i class="fas fa-users me-1"></i> Team Leadership
+                        </span>
+                        <span class="badge bg-light text-dark fs-6 mb-2">
+                            <i class="fas fa-chart-line me-1"></i> Business Development
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container py-4" id="resume-content">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-4 mb-4">
+                <div class="sidebar">
+                    <div class="text-center mb-4">
+                    </div>
+
+                    <h5 class="mb-3 fw-bold" style="color: var(--primary-color);">Navigation</h5>
+                    <nav id="sidebar-nav" class="nav flex-column">
+                        <a class="nav-link" href="#profile"><i class="fas fa-user"></i>Profile</a>
+                        <a class="nav-link" href="#skills"><i class="fas fa-tools"></i>Skills</a>
+                        <a class="nav-link" href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
+                        <a class="nav-link" href="#achievements"><i class="fas fa-trophy"></i>Achievements</a>
+                        <a class="nav-link" href="#training"><i class="fas fa-graduation-cap"></i>Training</a>
+                        <a class="nav-link" href="#education"><i class="fas fa-book"></i>Education</a>
+                        <a class="nav-link" href="#personal"><i class="fas fa-info-circle"></i>Personal Details</a>
+                    </nav>
+
+                    <hr class="my-4">
+
+                    <h5 class="mb-3 fw-bold" style="color: var(--primary-color);">Contact Information</h5>
+                    <ul class="list-unstyled contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>Narendra.cmsw@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+91 9885554297</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>H.no: - 9-46, Angalakuduru Po,<br> Tendil Md. Guntur Dist.<br> Andhra Pradesh - 522211
+                            </div>
+                        </li>
+                    </ul>
+
+                    <hr class="my-4">
+
+                    <h5 class="mb-3 fw-bold" style="color: var(--primary-color);">Languages</h5>
+                    <div class="table-responsive">
+                        <table class="table language-table">
+                            <thead>
+                                <tr>
+                                    <th>Language</th>
+                                    <th>Speak</th>
+                                    <th>Read</th>
+                                    <th>Write</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Telugu</td>
+                                    <td><i class="fas fa-check-circle text-success"></i></td>
+                                    <td><i class="fas fa-check-circle text-success"></i></td>
+                                    <td><i class="fas fa-check-circle text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Tamil</td>
+                                    <td><i class="fas fa-check-circle text-success"></i></td>
+                                    <td><i class="fas fa-times-circle text-danger"></i></td>
+                                    <td><i class="fas fa-times-circle text-danger"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Hindi</td>
+                                    <td><i class="fas fa-check-circle text-success"></i></td>
+                                    <td><i class="fas fa-check-circle text-success"></i></td>
+                                    <td><i class="fas fa-check-circle text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>English</td>
+                                    <td><i class="fas fa-check-circle text-success"></i></td>
+                                    <td><i class="fas fa-check-circle text-success"></i></td>
+                                    <td><i class="fas fa-check-circle text-success"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <!-- Profile Section -->
+                <section id="profile" class="section">
+                    <h2 class="section-title">Professional Profile</h2>
+                    <div class="mb-4">
+                        <div class="professional-statement">
+                            Aspiring to challenging assignments in a reputed organization, where my experience and
+                            skills are utilized to the utmost level and provide enough scope to explore my knowledge to
+                            serve the organization to the best of my ability and skills.
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <p>
+                            Highly organized and goal-oriented professional offering <strong>18 years</strong> of
+                            experience in the field of <strong>Automobile industry</strong> with expertise in
+                            <strong>Fault Diagnosis of Ashok Leyland HCV</strong>, <strong>Eicher HCV & LCV</strong>.
+                        </p>
+                        <p>
+                            Proficient in overhauling of Engine and Transmission systems, Handling Warranty Claims,
+                            Dealer Management System, and satisfying customers. Experienced in providing technical
+                            support and guidelines to Workshop Technicians and manpower. Proven track record in
+                            providing technical training to Customers, drivers & customer's technicians.
+                        </p>
+                    </div>
+
+                    <div class="alert alert-primary border-start border-4 border-primary">
+                        <div class="d-flex">
+                            <i class="fas fa-building me-3 fs-3" style="color: var(--secondary-color);"></i>
+                            <div>
+                                <h5> <img src="resource/logo-dark.svg" alt="Logo">Currently associated with APS MINING
+                                    & INFRASTRUCTURE INDIA Pvt Ltd</h5>
+                                <p class="mb-0"><strong>Position:</strong> Assistant Manager</p>
+                                <p class="mb-0"><strong>Duration:</strong> March 2025 – Present</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- <h5>Currently associated with Sermigu Smart South Chennai Private Limited (ACETECH)</h5> -->
+
+                <!-- Skills Section -->
+                <section id="skills" class="section">
+                    <h2 class="section-title">Career Skills</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <h5 class="mb-3"><i class="fas fa-cogs me-2 text-primary"></i>Technical Skills</h5>
+                            <div class="d-flex flex-wrap">
+                                <span class="skill-badge"><i class="fas fa-car-crash"></i>Fault Diagnosis</span>
+                                <span class="skill-badge"><i class="fas fa-tools"></i>Engine Overhauling</span>
+                                <span class="skill-badge"><i class="fas fa-warehouse"></i>Workshop Management</span>
+                                <span class="skill-badge"><i class="fas fa-headset"></i>Technical Support</span>
+                                <span class="skill-badge"><i class="fas fa-cog"></i>Spare Parts Management</span>
+                                <span class="skill-badge"><i class="fas fa-clipboard-check"></i>Quality Assurance</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <h5 class="mb-3"><i class="fas fa-chart-line me-2 text-primary"></i>Management Skills</h5>
+                            <div class="d-flex flex-wrap">
+                                <span class="skill-badge"><i class="fas fa-handshake"></i>Customer Relations</span>
+                                <span class="skill-badge"><i class="fas fa-file-contract"></i>Warranty Claims</span>
+                                <span class="skill-badge"><i class="fas fa-users"></i>Team Leadership</span>
+                                <span class="skill-badge"><i class="fas fa-bullseye"></i>Business Development</span>
+                                <span class="skill-badge"><i class="fas fa-tachometer-alt"></i>Performance
+                                    Improvement</span>
+                                <span class="skill-badge"><i class="fas fa-comments"></i>Complaint Handling</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="mt-4 mb-3"><i class="fas fa-star me-2 text-warning"></i>Key Strengths</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle me-2 text-success"></i>
+                                    <span>Strong team leader with ability to empower teams</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle me-2 text-success"></i>
+                                    <span>Adept at achieving goals in competitive markets</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle me-2 text-success"></i>
+                                    <span>Expertise in After Sales Service operations</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle me-2 text-success"></i>
+                                    <span>Valued contributor to organizational profits</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle me-2 text-success"></i>
+                                    <span>Skilled in staff development environments</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle me-2 text-success"></i>
+                                    <span>Communication skills to outperform targets</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle me-2 text-success"></i>
+                                    <span>Expertise in Ashok-Leyland,Bharat-Benz,Tata Motors vehicles </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience Section -->
+                <section id="experience" class="section">
+                    <h2 class="section-title">Professional Experience</h2>
+
+                    <div class="timeline">
+                        <!-- Current Job -->
+                        <div class="timeline-item">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                                <h4 class="mb-0">Assistant Manager</h4>
+                                <span class="badge bg-primary">Current Position</span>
+                            </div>
+                            <h5 class="text-primary">APS MINING & INFRASTRUCTURE INDIA Pvt Ltd</h5>
+                            <p class="text-muted mb-3">March 2025 - Present</p>
+                            <div class="mt-3">
+                                <ul class="fa-ul">
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Enhanced business
+                                        reputation at every opportunity</li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Improved customer
+                                        service quality and retention</li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Organized After
+                                        Sales Service activities efficiently</li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Provided
+                                        technical support for vehicle repairs</li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Created
+                                        environment for staff development and excellence</li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Daily vehicle
+                                        availabilty for Opeartion for achieving the Target Tonnage</li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Supervise
+                                        maintenance crews (mechanics, electricians, technicians) and contractors.
+                                    </li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Schedule and
+                                        assign daily/weekly tasks for equipment repairs and preventive maintenance.
+                                    </li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Manage
+                                        maintenance of heavy mining equipment (haul trucks, excavators, drills,
+                                        conveyors, crushers).
+                                    </li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Implement
+                                        preventive/predictive maintenance programs to minimize downtime.
+                                    </li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Develop
+                                        maintenance schedules aligned with production targets.</li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Analyze failure
+                                        trends and implement reliability improvements.</li>
+                                    <li><span class="fa-li"><i
+                                                class="fas fa-chevron-right text-secondary"></i></span>Coordinate with
+                                        OEMs for technical support and major overhauls.</li>
+
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Previous Job 1 -->
+                        <div class="timeline-item">
+                            <h4>Assistant Manager</h4>
+                            <h5 class="text-primary">Sermigu Smart South Chennai Pvt Ltd (ACETECH)</h5>
+                            <p class="text-muted">March 2022 - February 2025</p>
+                            <div class="mt-3">
+                                <button class="btn btn-outline-primary mb-3" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#job1Details">
+                                    View Key Responsibilities <i class="fas fa-chevron-down ms-2"></i>
+                                </button>
+                                <div class="collapse" id="job1Details">
+                                    <ul class="fa-ul">
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Complete
+                                            maintenance for all Vehicles & Equipment</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Maintained
+                                            records as per SOP and ISO norms</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Monitored
+                                            Vehicles & Equipment and provided feedback</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Prepared
+                                            preventive maintenance schedules</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Analyzed costs
+                                            of major repairs and overhauls</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Prepared daily
+                                            MIS reports and diesel analysis</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Ensured vehicle
+                                            availability for operations</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Mobilized
+                                            equipment to optimize utilization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Previous Job 2 -->
+                        <div class="timeline-item">
+                            <h4>Senior Service Executive</h4>
+                            <h5 class="text-primary">Chennai MSW Pvt Ltd (Ramky Group - Chennai)</h5>
+                            <p class="text-muted">June 2012 - March 2022</p>
+                            <div class="mt-3">
+                                <button class="btn btn-outline-primary mb-3" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#job1Details">
+                                    View Key Responsibilities <i class="fas fa-chevron-down ms-2"></i>
+                                </button>
+                                <div class="collapse" id="job1Details">
+                                    <ul class="fa-ul">
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Complete
+                                            maintenance for all Vehicles & Equipment</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Maintained
+                                            records as per SOP and ISO norms</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Monitored
+                                            Vehicles & Equipment and provided feedback</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Prepared
+                                            preventive maintenance schedules</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Analyzed costs
+                                            of major repairs and overhauls</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Prepared daily
+                                            MIS reports and diesel analysis</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Ensured vehicle
+                                            availability for operations</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Mobilized
+                                            equipment to optimize utilization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Previous Job 3 -->
+                        <div class="timeline-item">
+                            <h4>Senior Service Executive</h4>
+                            <h5 class="text-primary">Automotive Manufacturers Pvt. Ltd. (Ashok Leyland Dealer) -
+                                Hyderabad</h5>
+                            <p class="text-muted">February 2010 - June 2012</p>
+                            <div class="mt-3">
+                                <button class="btn btn-outline-primary mb-3" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#job2Details">
+                                    View Key Responsibilities <i class="fas fa-chevron-down ms-2"></i>
+                                </button>
+                                <div class="collapse" id="job2Details">
+                                    <ul class="fa-ul">
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Diagnosis and
+                                            rectification of technical complaints</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Managed 30 bays
+                                            workshop</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Analyzed spare
+                                            parts requirements</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Involved in
+                                            Engine & Transmission overhauls</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Prepared
+                                            warranty claims and failure reports</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Fault diagnosis
+                                            of BSIII & BSIV vehicles</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Handled customer
+                                            warranties</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Provided
+                                            breakdown assistance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Previous Job 4 -->
+                        <div class="timeline-item">
+                            <h4>Supervisor</h4>
+                            <h5 class="text-primary">Venkataramana Automobiles (Eicher Dealer) - Khammam</h5>
+                            <p class="text-muted">September 2006 - February 2010</p>
+                            <div class="mt-3">
+                                <button class="btn btn-outline-primary mb-3" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#job3Details">
+                                    View Key Responsibilities <i class="fas fa-chevron-down ms-2"></i>
+                                </button>
+                                <div class="collapse" id="job3Details">
+                                    <ul class="fa-ul">
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Job card
+                                            entering and closing</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Workshop
+                                            monitoring</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Warranties
+                                            follow up</li>
+                                        <li><span class="fa-li"><i
+                                                    class="fas fa-check-circle text-success"></i></span>Spares issuing
+                                            and ordering</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Achievements Section -->
+                <section id="achievements" class="section">
+                    <h2 class="section-title">Key Achievements</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="achievement-card">
+                                <i class="fas fa-medal"></i>
+                                <h5>Customer Service Excellence</h5>
+                                <p>Successfully improved business commitment to customer service and retention by
+                                    enhancing facilities and technical skills.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="achievement-card">
+                                <i class="fas fa-chart-line"></i>
+                                <h5>Operational Efficiency</h5>
+                                <p>Organized After Sales Service activities to ensure efficient and profitable
+                                    department operations while satisfying customer needs.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="achievement-card">
+                                <i class="fas fa-users"></i>
+                                <h5>Team Development</h5>
+                                <p>Created an environment where department staff could develop and excel, leading to
+                                    improved team performance.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="achievement-card">
+                                <i class="fas fa-trophy"></i>
+                                <h5>Revenue Growth</h5>
+                                <p>Combined communication and organizational skills to outperform targets and augment
+                                    revenue generation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Training Section -->
+                <section id="training" class="section">
+                    <h2 class="section-title">Training</h2>
+                    <div class="d-flex">
+                        <i class="fas fa-certificate fs-1 me-4" style="color: var(--secondary-color);"></i>
+                        <div>
+                            <h5>Ashok Leyland Service Training Center</h5>
+                            <p class="mb-1"><strong>Duration:</strong> 1 month</p>
+                            <p><strong>Focus:</strong> Various Engines and Transmission systems</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section id="education" class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-primary border-2">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-graduation-cap fs-1 me-3 text-primary"></i>
+                                        <div>
+                                            <h5 class="card-title">Diploma in Automobile Engineering</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">VKR & BNB Polytechnic</h6>
+                                        </div>
+                                    </div>
+                                    <p class="card-text">State Board of Technical Education and Training</p>
+                                    <p class="card-text mb-0"><strong>Year:</strong> 2006</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-primary border-2">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-school fs-1 me-3 text-primary"></i>
+                                        <div>
+                                            <h5 class="card-title">Secondary School Certificate</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">V S R J D M Z P High School</h6>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <p class="card-text">Angalakuduru, State Secondary School</p>
+                                    <p class="card-text mb-0"><strong>Year:</strong> 2003</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Personal Details -->
+                <section id="personal" class="section">
+                    <h2 class="section-title">Personal Details</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <h5><i class="fas fa-birthday-cake me-2 text-primary"></i>Date of Birth</h5>
+                                <p class="fs-5">7th April 1988</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <h5><i class="fas fa-map-marked-alt me-2 text-primary"></i>Location Preference</h5>
+                                <p class="fs-5">Tamil Nadu, Telangana, Andhra Pradesh</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <h5><i class="fas fa-file-signature me-2 text-primary"></i>Declaration</h5>
+                        <p>I hereby declare that the information provided in this resume is true and accurate to the
+                            best of my knowledge.</p>
+                        <div class="d-flex justify-content-end mt-4">
+                            <div class="text-end">
+                                <p class="mb-1 fs-5">P. Narendra</p>
+                                <p class="text-muted">Signature</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container text-center">
+            <p class="mb-0">© 2023 P. Narendra | Automobile Industry Professional</p>
+            <p class="mb-0">Email: Narendra.cmsw@gmail.com | Phone: +91 9885554297</p>
+            <p class="mt-2 mb-0">
+                <a href="https://linkedin.com/in/professional" target="_blank" class="text-white me-3"><i
+                        class="fab fa-linkedin fa-lg"></i></a>
+                <a href="mailto:Narendra.cmsw@gmail.com" class="text-white me-3"><i
+                        class="fas fa-envelope fa-lg"></i></a>
+                <a href="tel:+919885554297" class="text-white"><i class="fas fa-phone fa-lg"></i></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize Bootstrap scrollspy
+        const scrollSpy = new bootstrap.ScrollSpy(document.body, {
+            target: '#sidebar-nav'
+        });
+
+        // Add smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Collapse all job details by default
+        document.addEventListener('DOMContentLoaded', function () {
+            const collapseElements = document.querySelectorAll('.collapse');
+            collapseElements.forEach(el => {
+                new bootstrap.Collapse(el, { toggle: false });
+            });
+        }
+    </script>
+</body>
+
+</html>
